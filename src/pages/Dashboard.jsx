@@ -4,6 +4,7 @@ import axios from "axios";
 import { Toast, ToastContainer, Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import backgroundImage from "../assets/backgroundImage.jpg";
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 const Dashboard = () => {
   // const user = useSelector((state) => state.auth.user);
@@ -13,7 +14,7 @@ const Dashboard = () => {
   const getuser = async () => {
     let token = localStorage.getItem("usertoken");
 
-    const response = await axios.get("http://localhost:8000/user/getuser", {
+    const response = await axios.get(`${BASE_URL}/user/getuser`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
